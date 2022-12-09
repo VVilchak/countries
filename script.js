@@ -27,7 +27,11 @@ const renderCountry = function (data, className = '') {
 const getCountryAndNeighbour = function (country) {
   // ajax call country 1
   const request = new XMLHttpRequest();
-  request.open('GET', `https://restcountries.com/v2/name/${country}`);
+  request.open(
+    'GET',
+    `https://restcountries.com/v2/name/${country}
+`
+  );
   request.send();
   request.addEventListener('load', function () {
     const [data] = JSON.parse(this.responseText);
@@ -40,7 +44,7 @@ const getCountryAndNeighbour = function (country) {
     if (!neighbour) return;
     // ajax call country 2
     const request2 = new XMLHttpRequest();
-    request2.open('GET', `https://restcountries.com/v3.1/alpha/${neighbour}`);
+    request2.open('GET', `https://restcountries.com/v2/alpha/${neighbour}`);
     request2.send();
     request2.addEventListener('load', function () {
       const data2 = JSON.parse(this.responseText);
